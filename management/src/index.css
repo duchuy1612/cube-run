@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  body {
+    @apply bg-indigo-700;
+  }
+}
+
+@layer components {
+  .window {
+    @apply rounded-lg bg-white drop-shadow-lg;
+  }
+
+  .content_window {
+    @apply flex-grow;
+  }
+
+  .navbar {
+    @apply px-4 py-2;
+    @apply bg-white;
+    @apply rounded-lg;
+    @apply drop-shadow-lg;
+    @apply flex flex-row items-center justify-between;
+  }
+
+  .label {
+    @apply text-lg font-bold;
+    @apply bg-white text-black;
+    @apply rounded-md;
+    @apply drop-shadow-lg;
+    @apply text-center;
+    @apply px-4 py-3;
+  }
+
+  button {
+    @apply bg-black text-white;
+    @apply font-bold;
+    @apply text-lg;
+    @apply px-4 py-3;
+    @apply rounded-md ring-black;
+    @apply hover:scale-110;
+    @apply focus:ring-2 focus:ring-offset-2;
+    @apply disabled:bg-transparent disabled:text-black disabled:outline-dotted disabled:outline-black disabled:hover:scale-100;
+    @apply transition-all;
+    @apply drop-shadow-lg;
+  }
+
+  input {
+    @apply rounded-md;
+    @apply my-2 px-4 py-2;
+    @apply border-2 border-dashed border-black;
+    @apply hover:scale-105;
+    @apply active:border-solid;
+    @apply transition-all;
+  }
+
+  .react-calendar button {
+    @apply hover:scale-105;
+  }
+}
