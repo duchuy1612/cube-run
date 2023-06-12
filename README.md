@@ -1,2 +1,2 @@
-# cube-run
+# CUBE RUN
 UI for Cube Run app
