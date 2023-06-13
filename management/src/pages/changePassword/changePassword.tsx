@@ -24,11 +24,12 @@ export default function Password() {
           (isInvalidCred ? "outline-4" : "")
         }
       >
-        <div className="flex flex-col gap-2 w-11/12 h-4/5 items-center">
+        <div className="flex flex-col gap-2 w-full h-full items-center">
             <img src="/Vector.png" className="object-scale-down h-7"></img>
             <div className="text-base">Change Password</div>
         </div>
-        <form className="flex h-full flex-col gap-4" onSubmit={HandleSubmit}>
+        <form className="flex h-full flex-col gap-1" onSubmit={HandleSubmit}>
+            <div className="text-sm">Type your current password*</div> 
             <input
                 className="input"
                 type="password"
@@ -40,6 +41,7 @@ export default function Password() {
                 }}
                 required
             />
+            <div className="text-sm">Type your new password*</div>
             <input
                 className="input"
                 type="password"
@@ -51,6 +53,7 @@ export default function Password() {
                 }}
                 required
             />
+            <div className="text-sm">Retype your new password*</div>
             <input
                 className="input"
                 type="password"
@@ -65,7 +68,7 @@ export default function Password() {
           <div className="flex flex-col items-center justify-between">
             <button
                 type="submit"
-                className="w-3/5 bg-indigo-700 text-white"
+                className=" bg-indigo-700 text-white"
                 disabled={isLoading}
               >
                 Change Password
