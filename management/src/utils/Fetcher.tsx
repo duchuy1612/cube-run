@@ -11,7 +11,7 @@ export const UwcFetchToJSON = async (
     body: { [value: string]: string } | undefined = undefined,
     bearerToken: string = ""
   ) => {
-    let options: RequestInit = {
+    const options: RequestInit = {
       method: method,
       headers: {
         accept: "application/json",

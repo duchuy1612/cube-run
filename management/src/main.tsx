@@ -5,9 +5,10 @@ import { App } from "./App";
 import Login from "./pages/login/Login";
 import "./index.css";
 import Password from "./pages/changePassword/changePassword";
-import { Store } from "./store";
+import Store from "./store";
 import { Provider } from "react-redux";
 import Signup from "./pages/signup/SignUp";
+import { Home } from "./pages/Home"
 
 {/* import UserProvider, { UserContext } from "./contexts/UserContext"; */}
 
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route index path="/" element={<Login />}></Route>
           <Route path="/password" element={<Password />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/dashboard" element={<App />}>
             <Route path="worker"></Route>
           </Route>

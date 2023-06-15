@@ -1,12 +1,16 @@
 import { useState, useContext, FormEvent } from "react";
 import { ToggleButton } from "../../components/toggleButton";
+import { useDispatch } from 'react-redux'
 import { UserContext, CredentialsInterface } from "../../contexts/UserContext";
 import { UwcFetchToJSON } from "../../utils/Fetcher";
 import { useNavigate } from "react-router-dom";
-import { Icon } from '@iconify/react';
+import { useSelector } from "react-redux";
 
 export default function Login() {
   const navi = useNavigate();
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isInvalidCred, setInvalidCred] = useState(false);
@@ -42,22 +46,7 @@ export default function Login() {
           setUserRole(resp["role"] === "back officer" ? "admin" : "user");
           setUserEmail(email);
 
-          UwcFetchToJSON(
-            `/worker/getInfoByEmail`,
-            "POST",
-            { email: email },
-            resp["accessToken"]
-          ).then((infoResp) => {
-            setUserId(infoResp["id"]);
-            setUsername(infoResp["name"]);
-            setPhone(infoResp["phone"]);
-          });
-
-          if (resp["role"] === "back officer") {
-            navi("/dashboard/mcp-overview");
-          } else {
-            navi("/dashboard/daily-task");
-          }
+          navi("/home");
         }
       })
       .catch((error) => {
@@ -77,8 +66,9 @@ export default function Login() {
           (isInvalidCred ? "outline-4" : "")
         }
       >
-        <form className="flex basis-1/2 h-full flex-col gap-4" onSubmit={HandleSubmit}>
+        <form className="flex basis-1/2 h-full flex-col gap-1 justify-between" onSubmit={HandleSubmit}>
           <img src="/cube-run.png" className="object-scale-down items-center h-24"></img>
+          <div className="text-lg text-indigo-800 italic font-bold">Email</div>
           <input
             className="input"
             type="text"
@@ -90,6 +80,7 @@ export default function Login() {
             }}
             required
           />
+          <div className="text-lg text-indigo-800 italic font-bold">Password</div>
           <input
             className="input"
             type="password"
