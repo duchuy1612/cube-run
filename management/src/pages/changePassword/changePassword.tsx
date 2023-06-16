@@ -1,19 +1,27 @@
-import { useState, useContext, FormEvent } from "react";
+import { useState, useContext, FormEvent, useReducer } from "react";
 import { ToggleButton } from "../../components/toggleButton";
 import { useNavigate } from "react-router-dom";
 import { Icon } from '@iconify/react';
+
 
 export default function Password() {
   const navi = useNavigate();
   const [newPassword, setNewPassword] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
+  const [confirmedCurrentPassword, setconfirmedCurrentPassword] = useState("");
   const [isInvalidCred, setInvalidCred] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const HandleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    navi("/");
+    if (!error) {
+      navi("/home");
+    }
+    else{
+      setLoading(false);
+    }
   };
 
   return (
@@ -26,7 +34,7 @@ export default function Password() {
       >
         <div className="flex flex-col gap-2 w-full h-full items-center">
             <img src="/Vector.png" className="object-scale-down h-7"></img>
-            <div className="text-base">Change Password</div>
+            <div className="text-base font-bold">Change Password</div>
         </div>
         <form className="flex h-full flex-col gap-1" onSubmit={HandleSubmit}>
             <div className="text-sm">Type your current password*</div> 
@@ -58,9 +66,9 @@ export default function Password() {
                 className="input"
                 type="password"
                 placeholder="Retype New Password"
-                value={newPassword}
+                value={confirmedCurrentPassword}
                 onChange={(e) => {
-                    setNewPassword(e.target.value);
+                    setconfirmedCurrentPassword(e.target.value);
                     setInvalidCred(false);
                 }}
                 required
@@ -70,6 +78,15 @@ export default function Password() {
                 type="submit"
                 className=" bg-indigo-700 text-white"
                 disabled={isLoading}
+                onClick={() => { 
+                  if (newPassword === confirmedCurrentPassword) {
+                    setError(false);
+                  } else {
+                    setError(true);
+                    alert("Password does not match");
+                    
+                  }
+                }}
               >
                 Change Password
             </button>

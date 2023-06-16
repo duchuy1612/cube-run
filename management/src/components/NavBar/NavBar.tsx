@@ -4,25 +4,30 @@ import { useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
 import { useNavigate } from 'react-router-dom'
 
-
-export default function NavBar() {
+export default function NavBar( props: { page: string }) {
   const nav = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="w-full h-20 bg-secondary flex justify-center items-center text-xl">
-      <div className="w-2/3 h-full flex flex-row justify-between items-center">
+    <div className="p-4 w-full h-20 bg-indigo-500 gap-20 flex justify-between items-start text-lg rounded-tl-2xl">
+      <div className="w-full h-full flex flex-row justify-between items-center gap-4">
         <div className="flex flex-row gap-2 h-full">
           <div className="flex items-center">
-            <Icon
-              icon="fluent:leaf-three-16-filled"
-              color="#fff"
-              width="3rem"
-            />
+          {(() => {
+            switch (props.page) {
+              case 'account':
+                return <h2 className="text-white">Account Management</h2>
+              case 'event':
+                return <h2 className="text-white">Event Management</h2>
+              case 'log':
+                return <h2 className="text-white">Logs</h2>
+              default:
+                return '';
+        }
+      })()}
           </div>
-          <button onClick={() => nav("/home")}>Home</button>
         </div>
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 justify-between">
           <div>
             <label
               htmlFor="hs-trailing-button-add-on-with-icon-and-button"
@@ -30,7 +35,7 @@ export default function NavBar() {
             >
               Label
             </label>
-            <div className="relative flex rounded-md shadow-sm">
+            <div className="relative flex rounded-md shadow-sm gap-3">
               <input
                 type="text"
                 id="hs-trailing-button-add-on-with-icon-and-button"
@@ -51,13 +56,13 @@ export default function NavBar() {
               </div>
               <button
                 type="button"
-                className="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center rounded-l-none rounded-r-md border border-transparent font-semibold bg-primary text-black hover:bg-primaryHover active:bg-primaryActive transition-color text-sm"
+                className="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center rounded-l-none rounded-r-md border border-transparent font-semibold bg-white text-black hover:bg-primaryHover active:bg-primaryActive transition-color text-sm"
               >
                 Search
               </button>
             </div>
           </div>
-          <button
+          { /*<button
             className="rounded-full bg-secondary aspect-square w-12 h-12 flex items-center justify-center relative p-0"
             onClick={() => nav("/request")}
           >
@@ -65,8 +70,9 @@ export default function NavBar() {
             <div className="absolute rounded-full bg-red-500 font-bold text-white px-2 py-1 -right-3 -bottom-2 text-sm">
               {1000}
             </div>
-          </button>
-          <button
+          </button> */}
+        </div>
+        <button
             className="p-0 rounded-full"
             onClick={() => {
               nav("/account");
@@ -78,7 +84,6 @@ export default function NavBar() {
               alt="user image"
             />
           </button>
-        </div>
       </div>
     </div>
   );

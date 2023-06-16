@@ -106,6 +106,11 @@
     margin-top: 20px;
     padding: 10px;
     color: #350bf0;
+    border-radius: 3px;
+  }
+
+  .sidebar__logout:hover{
+    background:#16d0d6;
   }
   
   .sidebar__logout  .linked {
@@ -127,6 +132,7 @@
     position: absolute;
     /* overflow: auto; */
     overflow-y: scroll;
+    border-radius: 3px;
     /* overflow-y: scroll; */
   }
   

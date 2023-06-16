@@ -8,7 +8,7 @@ import Password from "./pages/changePassword/changePassword";
 import Store from "./store";
 import { Provider } from "react-redux";
 import Signup from "./pages/signup/SignUp";
-import { Home } from "./pages/Home"
+import Home from "./pages/Home"
 
 {/* import UserProvider, { UserContext } from "./contexts/UserContext"; */}
 
@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/dashboard" element={<App />}>
-            <Route path="worker"></Route>
+            <Route path="account"></Route>
           </Route>
         </Routes>
       </BrowserRouter>

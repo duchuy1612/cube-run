@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useReducer, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BlueButton from '../../components/Button/BlueButton'
 import RedButton from '../../components/Button/RedButton'
 import InputBlue from '../../components/InputBox/InputBlue'
 
 export default function Signup() {
+
     const navigate = useNavigate()
 
-    const navigateToHome = () => {
-      navigate('/home')
+    const navigateToLogin = () => {
+      navigate('/')
     }
 
     const navigateToAccount = () => {
@@ -26,23 +27,23 @@ export default function Signup() {
                 <div className="text-xl font-bold text-indigo-800">Add Account</div>
             </div>
             <div className="flex h-full flex-col gap-4 overflow-y-scroll">
-                <InputBlue label="Full Name" type="text"></InputBlue>
-                <InputBlue label="Email" type="email"></InputBlue>
-                <InputBlue label="Phone Number" type="tel"></InputBlue>
-                <InputBlue label="Address" type="text"></InputBlue>
-                <select className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
+                <InputBlue label="Full Name" type="text" required></InputBlue>
+                <InputBlue label="Email" type="email" required></InputBlue>
+                <InputBlue label="Phone Number" type="tel" required></InputBlue>
+                <InputBlue label="Address" type="text" required></InputBlue>
+                <select className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" required>
                   <option>Gender</option>
                   <option>Male</option>
                   <option>Female</option>
                   <option>Others</option>
                 </select>
-                <InputBlue label="Birthdate" type="date"></InputBlue>
-                <InputBlue label="Password" type="password"></InputBlue>
-                <InputBlue label="Confirm Password" type="password"></InputBlue>
+                <InputBlue label="Birthdate" type="date" required></InputBlue>
+                <InputBlue label="Password" type="password" required></InputBlue>
+                <InputBlue label="Confirm Password" type="password" required></InputBlue>
             </div>
             <div className="flex flex-row items-end justify-end gap-4">
                 <RedButton onClick={navigateToAccount}>Return</RedButton>
-                <BlueButton onClick={navigateToHome}>Save</BlueButton>
+                <BlueButton onClick={navigateToLogin}>Save</BlueButton>
             </div>
           </div>
         </div>

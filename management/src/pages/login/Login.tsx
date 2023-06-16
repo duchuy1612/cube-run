@@ -117,6 +117,11 @@ export default function Login() {
               onClick={() => {navi("./password")}}>
               Forgot Password
           </a>
+          <a className="flex flex-col items-center justify-between grow underline text-indigo-700"
+              href="./signup"
+              onClick={() => {navi("./signup")}}>
+              Haven't got an account yet?
+          </a>
         </form>
         <div className="flex basis-1/2 w-full h-full">
           <img
